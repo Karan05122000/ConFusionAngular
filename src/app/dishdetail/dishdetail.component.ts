@@ -20,7 +20,7 @@ export class DishdetailComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
      // tslint:disable-next-line: align
      this.dishservice.getDish(id)
-     .then(dish => this.dish = dish);
+     .subscribe(dish => this.dish = dish);
   }
   goBack(): void {
     this.location.back();
