@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import 'hammerjs';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
@@ -59,6 +60,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MatCardModule,
     MatButtonModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     MatSlideToggleModule,
     MatDialogModule,
     FormsModule,
