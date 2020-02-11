@@ -14,13 +14,16 @@ export class HomeComponent implements OnInit {
   dish: Dish;
   promotion: Promotion;
   leader: Leader;
+  dishErrMess: string;
   constructor(private dishservice: DishService, private promotionservice: PromotionService,
      // tslint:disable-next-line: align
      private leaderservice: LeaderService, @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
     this.dishservice.getFeaturedDish()
-      .subscribe(dish => this.dish = dish);
+      .subscribe(dish => this.dish = dish,
+        // tslint:disable-next-line: no-angle-bracket-type-assertion
+        disherrmess => this.dishErrMess = <any> disherrmess);
     this.promotionservice.getFeaturedPromotion()
       .subscribe(promotion => this.promotion = promotion);
     this.leaderservice.getFeaturedLeader()

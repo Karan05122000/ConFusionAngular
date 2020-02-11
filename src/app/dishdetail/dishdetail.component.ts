@@ -22,6 +22,7 @@ export class DishdetailComponent implements OnInit {
   firstname: string;
   message: string;
   rating: number;
+  errMess: string;
   feedbackForm: FormGroup;
   feedback: CommentsFeedback;
   formErrors = {
@@ -60,7 +61,9 @@ export class DishdetailComponent implements OnInit {
   ngOnInit() {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-    .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+    .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
+    // tslint:disable-next-line: no-angle-bracket-type-assertion
+    errmess => this.errMess = <any> errmess);
   }
   goBack(): void {
     this.location.back();
