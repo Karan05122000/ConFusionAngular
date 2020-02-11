@@ -1,4 +1,4 @@
 export class CommentsFeedback {
-  firstname: string;
-  message: string;
+  author: string;
+  comment: string;
 };
