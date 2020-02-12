@@ -7,23 +7,13 @@ import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommentsFeedback } from '../shared/comments_';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { visibility } from '../animations/app.animations';
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss'],
   animations: [
-    trigger('visibility', [
-        state('shown', style({
-            transform: 'scale(1.0)',
-            opacity: 1
-        })),
-        state('hidden', style({
-            transform: 'scale(0.5)',
-            opacity: 0
-        })),
-        transition('* => *', animate('0.5s ease-in-out'))
-    ])
+    visibility()
   ]
 })
 export class DishdetailComponent implements OnInit {
@@ -44,15 +34,22 @@ export class DishdetailComponent implements OnInit {
   formErrors = {
     // tslint:disable-next-line: object-literal-key-quotes
     'author': '',
+    // tslint:disable-next-line: object-literal-key-quotes
     'comment': ''
   };
   validationMessages = {
+    // tslint:disable-next-line: object-literal-key-quotes
     'author': {
+      // tslint:disable-next-line: object-literal-key-quotes
       'required':      'author Name is required.',
+      // tslint:disable-next-line: object-literal-key-quotes
       'minlength':     'author Name must be at least 2 characters long.',
+      // tslint:disable-next-line: object-literal-key-quotes
       'maxlength':     'author Name cannot be more than 25 characters long.'
     },
+    // tslint:disable-next-line: object-literal-key-quotes
     'comment': {
+      // tslint:disable-next-line: object-literal-key-quotes
       'required':      'Comment is required.',
     }
   };
@@ -67,7 +64,7 @@ export class DishdetailComponent implements OnInit {
       firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
       rating: 5,
       message: ['', [Validators.required, Validators.minLength(2)] ]
-    })
+    });
     this.commentForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
 
